@@ -18,13 +18,13 @@ public class RamblerSearchParametrizedTest extends BaseTest {
         $("[name='query']").setValue(searchItem).pressEnter();
         switchTo().window(1);
         $("#client").shouldHave(Condition.text(searchItem));
-        closeWindow();
+        //closeWindow();
     }
 
     @ParameterizedTest( name = "В результатах поиска присутствует \"{1}\" при поиске по \"{0}\"")
     @CsvFileSource (resources = "/items.csv")
     @DisplayName("Проверка автозамены в поиске при вводе в другой раскладке")
-    public void searchObjectShouldBeFinedByAutocorrect(String searchItem, String expectedItem) {
+    public void searchItemShouldBeFinedByAutocorrect(String searchItem, String expectedItem) {
         open("https://www.rambler.ru/");
         $("[name='query']").setValue(searchItem).pressEnter();
         switchTo().window(1);

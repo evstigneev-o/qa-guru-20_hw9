@@ -27,5 +27,5 @@ public class RamblerTopicsParametrizedTest extends BaseTest {
         $(".rc-topline").$(byText(categoryName)).click();
         $$("._3Ufez li").filter(visible).shouldHave(CollectionCondition.texts(buttonName));
     }
-    
+
 }
