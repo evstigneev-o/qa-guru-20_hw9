@@ -18,7 +18,6 @@ public class RamblerSearchParametrizedTest extends BaseTest {
         $("[name='query']").setValue(searchItem).pressEnter();
         switchTo().window(1);
         $("#client").shouldHave(Condition.text(searchItem));
-        //closeWindow();
     }
 
     @ParameterizedTest( name = "В результатах поиска присутствует \"{1}\" при поиске по \"{0}\"")
@@ -29,7 +28,6 @@ public class RamblerSearchParametrizedTest extends BaseTest {
         $("[name='query']").setValue(searchItem).pressEnter();
         switchTo().window(1);
         $("#client").shouldHave(Condition.text(expectedItem));
-        closeWindow();
     }
 
 
