@@ -1,6 +1,7 @@
 package rambler;
 
 import com.codeborne.selenide.CollectionCondition;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -20,8 +21,9 @@ public class RamblerTopicsParametrizedTest extends BaseTest {
         );
     }
 
-    @ParameterizedTest(name = "Соответствие списка категорий заданному топику {0}")
+    @ParameterizedTest
     @MethodSource("getTopicCategories")
+    @DisplayName("Соответствие списка категорий заданному топику {0}")
     public void categoryShouldBeOpenAfterClick(String categoryName, List<String> buttonName) {
         open("https://www.rambler.ru/");
         $(".rc-topline").$(byText(categoryName)).click();

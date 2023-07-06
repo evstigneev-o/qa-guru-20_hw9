@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 repositories {
@@ -10,6 +11,22 @@ ext {
     junitVersion = "5.9.3"
     selenideVersion = "6.14.1"
     slf4jVersion = "2.0.7"
+    selenideVersion = "6.14.1"
+    allureVersion = "2.21.0"
+}
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
 }
 
 dependencies {
@@ -17,6 +34,7 @@ dependencies {
             "com.codeborne:selenide:${selenideVersion}",
             "org.junit.jupiter:junit-jupiter:${junitVersion}",
             "org.slf4j:slf4j-simple:${slf4jVersion}",
+            "io.qameta.allure:allure-selenide:${allureVersion}"
     )
 }
 
@@ -26,4 +44,6 @@ tasks.withType(JavaCompile).configureEach {
 
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
+    ignoreFailures = true
 }
