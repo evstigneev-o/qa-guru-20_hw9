@@ -17,8 +17,12 @@ public class BaseTest {
     @BeforeAll
     static void setUp() {
         SelenideLogger.addListener("allure",new AllureSelenide());
+        Configuration.remote = System.getProperty("selenoid");
+        Configuration.baseUrl = System.getProperty("baseUrl","https://rambler.ru");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        Configuration.browserSize = System.getProperty("browserSize","1920x1080");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
         //Configuration.headless = true;
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
