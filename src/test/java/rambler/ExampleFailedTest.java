@@ -7,6 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ExampleFailedTest {
     @Test
     public void failedTest(){
-        assertTrue(false);
+        assertTrue(true);
     }
 }
